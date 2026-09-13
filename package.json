@@ -1,0 +1,13 @@
+{
+  "name": "kisan-setu-fullstack",
+  "private": true,
+  "version": "1.0.1",
+  "scripts": {
+    "install-all": "npm --prefix frontend install && npm --prefix backend install",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "start": "npm --prefix backend start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
