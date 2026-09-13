@@ -10,7 +10,7 @@ dotenv.config();
 const __dirname=path.dirname(fileURLToPath(import.meta.url));
 const app=express();
 const PORT=process.env.PORT||5000;
-app.use(cors({origin:process.env.FRONTEND_URL||'http://localhost:5173'}));
+app.use(cors({origin:process.env.FRONTEND_URL||'https://kisan-setu-y12h.vercel.app'}));
 app.use(express.json({limit:'2mb'}));
 const uploadDir=path.join(__dirname,'uploads'); if(!fs.existsSync(uploadDir))fs.mkdirSync(uploadDir,{recursive:true});
 const storage=multer.diskStorage({destination:(_,__,cb)=>cb(null,uploadDir),filename:(_,file,cb)=>{const safe=file.originalname.replace(/[^a-z0-9.\-_]/gi,'_');cb(null,`${Date.now()}-${safe}`)}});
