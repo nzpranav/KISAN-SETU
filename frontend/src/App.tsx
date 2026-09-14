@@ -241,13 +241,13 @@ function DashboardHome({farmer,geo,doGeo,refreshGeo}:{farmer:Farmer;geo:{lat:num
       </section>
       <section className="panel reference-actions-panel">
         <PanelTitle title="Quick Actions"/>
-        <div className="reference-action-grid"><QuickAction icon={<Leaf/>} title="Add Crop" to="/dashboard/crops"/><QuickAction icon={<IndianRupee/>} title="Calculate Profit" to="/dashboard/calculator"/><QuickAction icon={<BarChart3/>} title="Compare Markets" to="/dashboard/markets"/><QuickAction icon={<Truck/>} title="Transport" to="/dashboard/logistics"/><QuickAction icon={<Upload/>} title="Documents" to="/dashboard/api/documents"/><QuickAction icon={<CreditCard/>} title="Payments" to="/dashboard/payments"/></div>
+        <div className="reference-action-grid"><QuickAction icon={<Leaf/>} title="Add Crop" to="/dashboard/crops"/><QuickAction icon={<IndianRupee/>} title="Calculate Profit" to="/dashboard/calculator"/><QuickAction icon={<BarChart3/>} title="Compare Markets" to="/dashboard/markets"/><QuickAction icon={<Truck/>} title="Transport" to="/dashboard/logistics"/><QuickAction icon={<Upload/>} title="Documents" to="/dashboard/documents"/><QuickAction icon={<CreditCard/>} title="Payments" to="/dashboard/payments"/></div>
       </section>
     </div>
 
     <div className="reference-bottom-grid">
       <section className="panel">
-        <PanelTitle title="Documents" action={<Link className="link-btn" to="/dashboard/api/documents">Manage <ArrowRight size={14}/></Link>}/>
+        <PanelTitle title="Documents" action={<Link className="link-btn" to="/dashboard/documents">Manage <ArrowRight size={14}/></Link>}/>
         <div className="mini-docs">{defaultDocs.slice(0,4).map(d=><div key={d.name}><FileText size={16}/><span>{d.name}</span><b className={'status status-'+d.status.toLowerCase()}>{d.status}</b></div>)}</div>
       </section>
       <section className="panel">
