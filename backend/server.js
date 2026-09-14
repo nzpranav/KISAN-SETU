@@ -5,6 +5,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import { connectDB } from './db.js';
 
 dotenv.config();
 const __dirname=path.dirname(fileURLToPath(import.meta.url));
@@ -39,4 +40,4 @@ app.post('/api/payments/create',(req,res)=>{const {amount,method}=req.body||{};i
 app.post('/api/payments/:id/verify',(req,res)=>{const p=payments.find(x=>x.id===req.params.id);if(!p)return res.status(404).json({message:'Payment not found.'});p.status='Pending';p.lastCheckedAt=new Date().toISOString();res.json({success:true,payment:p,verified:false,message:'Payment confirmation requires a legitimate provider or bank callback.'})});
 app.get('/api/payments',(req,res)=>res.json({payments}));
 app.use((err,_,res,__)=>res.status(400).json({message:err?.message||'Request failed'}));
-app.listen(PORT,()=>console.log(`Kisan Setu backend running on http://localhost:${PORT}`));
+connectDB().then(() => app.listen(PORT, () => console.log("Kisan Setu backend running on port " + PORT)));
